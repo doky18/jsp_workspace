@@ -48,7 +48,13 @@ public class BoardDAO {
 		return result;
 	}
 	
-	public void delete() {
+	public int delete(int board_idx) {
+		int result =0;
+		SqlSession sqlSession = config.getSqlSession();	
+		result = sqlSession.delete("Board.delete", board_idx);
+		sqlSession.commit();
+		config.release(sqlSession);
+		return result;
 		
 	}
  
