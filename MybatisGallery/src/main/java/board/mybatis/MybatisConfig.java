@@ -26,7 +26,6 @@ public class MybatisConfig {
             e.printStackTrace();
         }
     }
-
 	// sqlSessionFactory로부터 sqlSession을 반환해줄수있는 메서드
 	public SqlSession getSqlSession() {
 		// 팩토리로부터 쿼리 수행 객체인 SqlSession 하나 반환해주기
@@ -38,12 +37,11 @@ public class MybatisConfig {
 			sqlSession.close();
 		}
 	}
-
+	
 	public static MybatisConfig getInstance() {
 		if (instance == null) {
 			instance = new MybatisConfig();
 		}
 		return instance;
 	}
-
 }
