@@ -8,8 +8,7 @@ import board.domain.Board;
 import board.mybatis.MybatisConfig;
 
 public class BoardDAO {
-	//아래의 싱글턴 객체의 인스턴스가 메모리에 생성될 때,
-	//동시에 멤버변수로 존재하는 SqlSessionFactory로 올라간다 (한번만)
+	//아래의 싱글턴 객체의 인스턴스가 메모리에 생성될 때, 동시에 멤버변수로 존재하는 SqlSessionFactory로 올라간다 (한번만)
 	MybatisConfig config = MybatisConfig.getInstance();
 	
 	public int insert(Board board) {
@@ -47,12 +46,9 @@ public class BoardDAO {
 		config.release(sqlSession);
 		return result;
 	}
-	
 	public int delete() {
 		int result =0;
 		
 		return result;
-		
 	}
- 
 }
