@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Board">
-
-
 <!-- insert 문 
 	Mybatis는 자바객체와 SQL문 사이의 매핑을 자동으로 처리하는 일명 SQL Mapper라 불린다.
 	따라서 개발자가 사용할 DTO 를 parameterType으로 명시해놓으면 해당 DTO의 멤버변수와 SQL문과의 매핑이 자동으로 이루어진다
