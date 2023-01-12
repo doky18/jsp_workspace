@@ -48,7 +48,10 @@ public class BoardDAO {
 		return result;
 	}
 	
-	public void delete() {
+	public int delete() {
+		int result =0;
+		
+		return result;
 		
 	}
  
