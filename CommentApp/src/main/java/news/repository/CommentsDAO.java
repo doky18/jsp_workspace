@@ -18,4 +18,6 @@ public class CommentsDAO {
 		config.release(sqlSession);
 		return result;
 	}
+	
+	
 }

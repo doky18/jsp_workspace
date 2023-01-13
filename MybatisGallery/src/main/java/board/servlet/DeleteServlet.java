@@ -2,9 +2,29 @@
 
 package board.servlet;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+=======
+public class DeleteServlet {
+  
+  if(file.delete()) { //파일이 삭제되었다면...
+            int result=boardDAO.delete(Integer.parseInt(board_idx));
+
+            out.print("<script>");
+            if(result>0) {
+                out.print("alert('삭제완료');");
+                out.print("location.href='/board/list.jsp';");
+            }else {
+                out.print("alert('삭제실패');");
+                out.print("history.back();");
+            }
+            out.print("</script>");
+        }
+
+    }
+>>>>>>> e91575685462b7b0ff1cf07be084cbb9421871a0
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
