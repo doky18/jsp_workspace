@@ -3,22 +3,30 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
 	<typeAliases>
-		<typeAlias type="store.domain.Category" alias="Category"/>
-		<typeAlias type="store.domain.Store" alias="Store"/>
+		<typeAlias type="store.domain.Category" alias="Category" />
+		<typeAlias type="store.domain.Store" alias="Store" />
+		<typeAlias type="emp.domain.Dept" alias="Dept" />
+		<typeAlias type="emp.domain.Emp" alias="Emp" />
 	</typeAliases>
-  <environments default="development">
-    <environment id="development">
-      <transactionManager type="JDBC"/>
-      <dataSource type="JNDI">
-      	<!-- 컨테이너에서 지원하는 커넥션 풀을 jndi로 사용 -->
-        <property name="data_source" value="java:comp/env/jdbc/mysql"/>
-          </dataSource>
-    </environment>
-  </environments>
-  <mappers>
-    <mapper resource="store/mybatis/CategoryMapper.xml"/>
-    <mapper resource="store/mybatis/StoreMapper.xml"/>
-  </mappers>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="JNDI">
+				<!-- 컨테이너에서 지원하는 커넥션 풀을 jndi로 사용 -->
+				<property name="data_source"
+					value="java:comp/env/jdbc/mysql" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="store/mybatis/CategoryMapper.xml" />
+		<mapper resource="store/mybatis/StoreMapper.xml" />
+		<mapper resource="store/mybatis/DeptMapper.xml" />
+		<mapper resource="store/mybatis/EmpMapper.xml" />
+
+
+	</mappers>
 </configuration>
 

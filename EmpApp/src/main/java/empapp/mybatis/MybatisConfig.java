@@ -1,4 +1,4 @@
-package store.mybatis;
+package empapp.mybatis;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,7 +15,7 @@ public class MybatisConfig {
 	SqlSessionFactory sqlSessionFactory;
 
 	private MybatisConfig() {
-		String resource = "store/mybatis/config.xml";
+		String resource = "empapp/mybatis/config.xml";
 		InputStream inputStream = null;
 		try {
 			inputStream = Resources.getResourceAsStream(resource);

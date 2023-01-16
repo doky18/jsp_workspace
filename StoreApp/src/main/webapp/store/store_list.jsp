@@ -18,6 +18,7 @@
 	Gson gson = new Gson();
 	String result = gson.toJson(storeList);
 	out.print(result);
+
 	
 
 %>

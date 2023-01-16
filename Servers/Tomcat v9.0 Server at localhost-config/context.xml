@@ -26,15 +26,11 @@
     <!--
     <Manager pathname="" />
     -->
-    
-    <!-- server.xml에 붙여준 이름 그대로,,, -->>
+
     <ResourceLink type="javax.sql.DataSource"
-                   		   name="jdbc/mysql"
-                  		   global="jdbc/mysql" />
-                  		   
-<ResourceLink type="javax.sql.DataSource"
-                   		   name="jdbc/oracle"
-                  		   global="jdbc/oracle" />
-                   	   
-                      
+                      name="jdbc/mysql"
+                      global="jdbc/mysql" />
+    <ResourceLink type="javax.sql.DataSource"
+                      name="jdbc/oracle"
+                      global="jdbc/oracle" />
 </Context>
