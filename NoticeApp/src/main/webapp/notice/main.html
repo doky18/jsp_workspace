@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<script type="text/babel">
+	//왜 바벨? jsx 를 쓰기 위해서
+	//나만의 UI 컴포넌트(재사용성이 높은 디자인 코드)정의
+	//사용시엔 <Row 속성1={} 속성2={}/>
+
+
+function Row(props){
+	return(
+			      <tr>
+			        <td>{props.nickname}</td>
+			        <td><a href="#"onClick={()=>getDetail(props.notice)}>{props.notice.title}</a></td>
+			        <td>{props.notice.writer}</td>
+			        <td>{props.notice.regdate}</td>
+			        <td>{props.notice.hit}</td>
+			      </tr>
+		);
+};
+
+//위의 컴포넌트를 이용하여 호면에 출력학
+function printRow(noticeList){		//noticeList에 들어있는 (dto)제이슨 받기 (들어온 데이터 만큼,,,)
+	let tag=[];	//컴포넌트를 모아놓을 js 배열
+	for(let i=0; i<noticeList.length;i++){
+		let json = noticeList[i];		//게시물 한 건 꺼내기 (json)
+		tag.push(<Row key={i} notice={json} nickname={"doky"}/>);		//UI컴포넌트를 괄호 안에 넣어,,
+	}
+	//루트에 렌더링 하기
+	let root = ReactDOM.createRoot(document.getElementById("root"));
+	root.render(tag);
+}
+
+
+
+</script>
+<script type="text/javascript">
+function getDetail(notice){		//이렇게 하면 디비연동없이도 바로 바로 불러 올 수 있음
+	//alert(notice.title);	
+	
+	//화면 우측에 출력
+	$("#form2 input[name='title']").val(notice.title);
+	$("#form2 input[name='writer']").val(notice.writer);
+	$("#form2 textarea[name='content']").val(notice.content);
+}
+
+function getList(){
+	$.ajax({
+		url:"/notice/list.jsp",
+		type:"GET",
+		success:function(result, status, xhr){
+			console.log(result);
+			//json으로 변환하는 2가지 방법
+			//1) 서버가 String으로 보낸 경우 클라이언트인 js에서 변환
+			//2) 아예, 서버에서 json으로 보내는 방법 -> list.jsp 상단에 contentType="application/json;charset=UTF-8" 로 바꿔주기
+			printRow(result);
+		}
+	});
+}
+
+$(function(){
+	getList();
+});
+</script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col-md-2 border">
+                <div class="form-group mt-2">
+                    <input class="form-control" placeholder="title" name="title">
+                </div>
+                <div class="form-group mt-2">
+                    <input class="form-control" placeholder="writer" name="writer">
+                </div>
+                <div class="form-group mt-2">
+                    <textarea class="form-control" rows="10" cols="20" id="content"></textarea>
+                </div>
+                <div class="form-group mt-2">
+                    <button id="bt_regist" type="button"  class="btn btn-outline-info">등록</button>
+                </div>
+            </div>
+				<div class="col-md-8 border" style="overflow:scroll">
+                     <table class="table">
+                         <thead class="thead-dark">
+                             <tr>
+                                <th>no</th>
+                                 <th>title</th>
+                                 <th>writer</th>
+                                 <th>content</th>
+                                 <th>regdate</th>
+                                 <th>hit</th>
+                             </tr>
+                         </thead>
+						<tbody id="root">
+					</tbody>
+                </table>
+            </div>
+            <div class="col-md-2 border">
+                <div class="form-group mt-2">
+                    <input class="form-control" placeholder="title" name="title">
+                </div>
+                <div class="form-group mt-2">
+                    <input class="form-control" placeholder="writer" name="writer">
+                </div>
+                <div class="form-group mt-2">
+                    <textarea class="form-control" rows="10" cols="20" id="content"></textarea>
+                </div>
+                <div class="form-group mt-2">
+                    <button id="bt_regist" type="button" class="btn btn-outline-warning">수정</button>
+                    <button id="bt_regist" type="button" class="btn btn-outline-danger">삭제</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

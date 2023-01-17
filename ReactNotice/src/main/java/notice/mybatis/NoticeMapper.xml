@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Notice">
+	
+	<!-- insert 할 때 regdate, hit은 테이블 만들 때 디폴트로 줬기 때문에 안해도 된다 -->
+	<insert id="insert" parameterType="Notice">
+		insert into notice2(notice2_idx, title, writer, content)
+		values(notice2_seq.nextval, title=#{title}, writer=#{writer}, content=#{content})
+		
+	</insert>
+	
+	<select id="selectAll" resultType="Notice">
+		select * from notice2 order by notice_idx desc
+	</select>
+
+</mapper>

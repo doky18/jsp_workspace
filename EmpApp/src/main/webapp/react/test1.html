@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- JSX : javascript XML : js 코드안에  html 태그 작성이 가능하도록 지원함-->
+  
+    <script type="text/babel">
+       // alert();
+        
+        //우리들 만의 ui 컴포넌트를 정의한다
+        //ui 컴포넌트는 재사용할 태그를 반드시 반환해야 한다(return으로)
+        //개발자는 ui 컴포넌트를 정의하면, 마치 사용자 정의 태그처럼 재사용이 가능하다
+        function Hi(){
+           return(
+                <div>
+                    <h1>리액트 시작 {1+9}</h1>
+                    <h2>리액트 시작</h2> 
+                </div>
+                );
+                //retrun의 대상에 되는 태그는 하나여야 함. 
+                //이걸 해소하려면 특정 태그에 감싸져있어야 함
+                //두 줄 이상인 것은 반드시 ()로 감싸야 한다.
+
+                
+        }
+
+        //호출 하려면....
+        //ReactDOM.render(어떤 태그를 , 어디에);
+        //ReactDOM.render(<Hi/>, document.getElementById("container"));  //이건 더이상 지원하지 않음 createRoot를 쓰라고 함
+        let root = ReactDOM.createRoot(document.getElementById("container"));
+        root.render(<Hi/>);      
+            //render-> 화면에 나타나는 것
+
+    </script>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+</body>
+</html>
