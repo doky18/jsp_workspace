@@ -6,19 +6,22 @@ import java.io.InputStream;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+//하나의 프로그램에서   SqlSessionFactory는 하나만 있으면 충분하므로
+//싱글턴으로 관리한다...
 public class MybatisConfig {
-	private static MybatisConfig instance;		//=new MybatisConfig();
+	private static MybatisConfig instance; 
 	SqlSessionFactory sqlSessionFactory;
 	
+	
 	private MybatisConfig() {
-		String resource ="mybatis/config.xml";
-		InputStream inputStream = null;
-		
+		String resource = "mybatis/config.xml";
+		InputStream inputStream=null;
 		try {
 			inputStream = Resources.getResourceAsStream(resource);
+			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);		
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -30,15 +33,20 @@ public class MybatisConfig {
 		return instance;
 	}
 	
-	//세션 팩토리로부터 쿼리 수행객체 하나 얻기
-	public SqlSession  getSqlSession() {
+	// 팩토리에 SqlSession하나 얻기 
+	public SqlSession getSqlSession() {
 		return sqlSessionFactory.openSession();
 	}
 	
-	//쿼리 수행객체 닫기
+	//반납하기
 	public void release(SqlSession sqlSession) {
-		if(sqlSession!=null) {
+		if(sqlSession !=null) {
 			sqlSession.close();
 		}
 	}
 }
+
+
+
+
+
