@@ -17,6 +17,7 @@
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
+<<<<<<< HEAD
 	//나만의 UI 컴포넌트(재사용성이 높은 디자인 코드) 정의
 	//사용시엔 <Row 속성1={} 속성2={} />
 	function Row(props){
@@ -46,6 +47,37 @@
 		root.render(tag);
 	};
 
+=======
+	//왜 바벨? jsx 를 쓰기 위해서
+	//나만의 UI 컴포넌트(재사용성이 높은 디자인 코드)정의
+	//사용시엔 <Row 속성1={} 속성2={}/>
+
+function Row(props){
+	return(
+			      <tr>
+			        <td>{props.nickname}</td>
+			        <td><a href="#"onClick={()=>getDetail(props.notice)}>{props.notice.title}</a></td>
+			        <td>{props.notice.writer}</td>
+			        <td>{props.notice.regdate}</td>
+			        <td>{props.notice.hit}</td>
+			      </tr>
+		);
+};
+
+//위의 컴포넌트를 이용하여 호면에 출력학
+function printRow(noticeList){		//noticeList에 들어있는 (dto)제이슨 받기 (들어온 데이터 만큼,,,)
+	let tag=[];	//컴포넌트를 모아놓을 js 배열
+	for(let i=0; i<noticeList.length;i++){
+		let json = noticeList[i];		//게시물 한 건 꺼내기 (json)
+		tag.push(<Row key={i} notice={json} nickname={"doky"}/>);		//UI컴포넌트를 괄호 안에 넣어,,
+	}
+	//루트에 렌더링 하기
+	let root = ReactDOM.createRoot(document.getElementById("root"));
+	root.render(tag);
+}
+
+
+>>>>>>> 7f65e501342b8af3d6ba8ffe96bb539d3b9c6975
 </script>
 <script type="text/javascript">
 let root;
@@ -212,5 +244,8 @@ $(function(){
 	</div>
 </body>
 </html>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7f65e501342b8af3d6ba8ffe96bb539d3b9c6975

@@ -1,5 +1,6 @@
 <%@page import="com.jspshop.domain.Admin"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
+<%@ include file="/admin/inc/logincheck.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
