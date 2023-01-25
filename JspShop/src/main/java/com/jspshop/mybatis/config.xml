@@ -7,6 +7,9 @@
 		<typeAlias type="com.jspshop.domain.Admin" alias="Admin"/>
 		<typeAlias type="com.jspshop.domain.Category" alias="Category"/>
 		<typeAlias type="com.jspshop.domain.Product" alias="Product"/>
+		<typeAlias type="com.jspshop.domain.Color" alias="Color" />
+        <typeAlias type="com.jspshop.domain.Psize" alias="Psize" />
+        <typeAlias type="com.jspshop.domain.Pimg" alias="Pimg" />
 	</typeAliases>
 
 	<environments default="development">
@@ -19,10 +22,14 @@
 			</dataSource>
 		</environment>
 	</environments>
+	
 	<mappers>
 		<mapper resource="com/jspshop/mybatis/AdminMapper.xml"/>
 		<mapper resource="com/jspshop/mybatis/CategoryMapper.xml"/>
 		<mapper resource="com/jspshop/mybatis/ProductMapper.xml"/>
+		<mapper resource="com/jspshop/mybatis/ColorMapper.xml" />
+        <mapper resource="com/jspshop/mybatis/PsizeMapper.xml" />
+        <mapper resource="com/jspshop/mybatis/PimgMapper.xml" />
 	</mappers>
 	
 </configuration>

@@ -1,7 +1,10 @@
 package com.jspshop.domain;
 
+
 public class Color {
-	private int color_idx;
+	public Color() {
+		System.out.println("Color 생성자 호출");
+	}
 	public int getColor_idx() {
 		return color_idx;
 	}
@@ -20,6 +23,7 @@ public class Color {
 	public void setColor_name(String color_name) {
 		this.color_name = color_name;
 	}
-	private Product product;		//부모인 Product 를 association 으로 가져옴 1:1관계를 말함
+	private int color_idx;
+	private Product product;//부모인 Product 을 assocation으로 가져옴
 	private String color_name;
 }

@@ -1,5 +1,8 @@
 package com.jspshop.repository;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.jspshop.domain.Product;
@@ -8,21 +11,35 @@ import com.jspshop.exception.ProductException;
 public class ProductDAO {
 	private SqlSession sqlSession;
 	
-	//생성자 주입 (injection)
 	public void setSqlSession(SqlSession sqlSession) {
-		this.sqlSession=sqlSession;
+		this.sqlSession = sqlSession;
 	}
 	
-	
-	public int insert(Product product) throws ProductException{	//내가 만든 예외를 처리하는게 아니라 회피해서 외부에 알린 것 
-		int result = 0;
-		result = sqlSession.insert("Product.insert", product);
-		//여기서 commit 노노 -> 서블릿이 커밋 할 것 (세 DAO가 다 되면)
+	//throws 는 예외를 처리한게 아니라, 회피하는 것이다. 즉 전가시키는 것이다
+	public void insert(Product product) throws ProductException{
+		int result=0;
+		System.out.println("Mybatis 만나기 전의 product_idx="+product.getProduct_idx());
+		result=sqlSession.insert("Product.insert", product);
+		System.out.println("Mybatis 만난 후 product_idx="+product.getProduct_idx());
 		if(result<1) {
-			//에러를 일부러 일으키자! throws가 아니라 throw임
-			//왜 에러를 일으키느냐? 뭔갈 알려주려고
+			//에러를 일부러 일으키자!!
 			throw new ProductException("상품이 등록되지 않았어요");
 		}
-		return result;
+	}
+	
+	//검색
+	public List selectBySearch(Map map) {
+		return sqlSession.selectList("Product.selectAll", map);
+	}
+	
+	//모두 가져오기
+	public List selectAll() {
+		return sqlSession.selectList("Product.selectAll");
+	}
+	
+	public List selectByCategory(int category_idx) {
+		return sqlSession.selectList("Product.selectByCategory", category_idx);
 	}
 }
+
+
