@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member">
+
+	<!-- 모두 가져오기 -->	
+	<select id="selectAll" resultType="Member">
+		select * from member
+	</select>
+	
+	<!-- 등록 -->	
+	<select id="insert" parameterType="Member">
+		insert into Member (member_idx, id, pass, name, email, addr1, addr2)
+		values(#{id}, #{pass}, #{name}, #{email}, #{addr1}, #{addr2})
+	</select>
+	
+	<!-- 수정 -->	
+	<update id="update" parameterType="Member">
+		update member set id=#{id}, pass=#{pass}, name=#{name}, email=#{email}, 
+		addr1=#{addr1}, addr2=#{addr2} where member_idx=#{member_idx}
+	</update>
+	
+	<!-- 삭제 -->	
+	<delete id="delete" parameterType="int">
+		delete from member where member_idx=#{member_idx}
+	</delete>
+	
+
+
+</mapper>
