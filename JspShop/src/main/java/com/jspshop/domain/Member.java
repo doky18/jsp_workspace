@@ -43,11 +43,21 @@ public class Member {
 	public void setAddr2(String addr2) {
 		this.addr2 = addr2;
 	}
+	public String getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
 	private int member_idx;
 	private String id;
 	private String pass;
 	private String name;
 	private String email;
-	private String addr1;
-	private String addr2;
+	private String addr1;//기본주소 
+	private String addr2;//상세주소
+	private String regdate;
 }
+
+
+

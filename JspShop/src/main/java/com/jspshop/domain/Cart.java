@@ -1,11 +1,19 @@
 package com.jspshop.domain;
 
-import lombok.Data;
 
-@Data
-public class Cart extends Product{
-	//상품에는 존재하는 속성인 개수를 추가하자~!~~
+public class Cart{
+	private Product product;
+	//상품에는 존재하는 속성인 개수를 추가하자~!
 	private int ea;
+	private Member member;
+	
+	
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 	public int getEa() {
 		return ea;
 	}
@@ -18,5 +26,7 @@ public class Cart extends Product{
 	public void setMember(Member member) {
 		this.member = member;
 	}
-	private Member member;
 }
+
+
+

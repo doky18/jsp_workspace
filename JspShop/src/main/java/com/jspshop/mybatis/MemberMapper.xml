@@ -4,7 +4,7 @@
 
 	<!-- 모두 가져오기 -->	
 	<select id="selectAll" resultType="Member">
-		select * from member
+		select * from member order by member_idx asc
 	</select>
 	
 	<!-- 등록 -->	
@@ -23,6 +23,13 @@
 	<delete id="delete" parameterType="int">
 		delete from member where member_idx=#{member_idx}
 	</delete>
+	
+	<select id="select" 
+		parameterType="Member" 
+		resultType="Member">
+		select * from member
+		where id=#{id} and pass=#{pass}
+	</select>
 	
 
 

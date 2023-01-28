@@ -5,48 +5,64 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.jspshop.domain.Member;
-import com.jspshop.mybatis.MybatisConfig;
+import com.jspshop.exception.MemberException;
 
 public class MemberDAO {
-	MybatisConfig config = MybatisConfig.getInstance();
 	
-	//모두 가져오기
+	private SqlSession sqlSession;
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
 	public List selectAll() {
-		List list = null;
-		SqlSession sqlSession = config.getSqlSession();
-		list = sqlSession.selectList("Member.selectAll");
-		config.release(sqlSession);
-		return list;
+		return sqlSession.selectList("Member.selectAll");
 	}
 	
-	//등록하기
-    public int insert(Member member) {
-        int result = 0;
-        SqlSession sqlSession = config.getSqlSession();
-        result = sqlSession.insert("Member.insert", member);
-        sqlSession.commit(); //DML은 commit 필요함
-        config.release(sqlSession);
-        return result;
-    }
-    
-	//수정하기
-	public int update(Member member) {
+	//id, pass 일치하는 사람 가져오기 (한 사람)
+	public Member select(Member member) throws MemberException{
+		Member dto=null;
+		dto=sqlSession.selectOne("Member.select", member);
+		if(dto==null) {
+			throw new MemberException("회원정보가 올바르지 않습니다");
+		}
+		return dto;
+	}
+	
+	//한건넣기 
+	public void insert(Member member) throws MemberException{
 		int result=0;
-		SqlSession sqlSession = config.getSqlSession();
+		result = sqlSession.insert("Member.insert", member);
+		if(result <1) {
+			throw new MemberException("입력실패");
+		}
+	}
+	
+	//한건수정
+	public void update(Member member) throws MemberException{
+		int result=0;
 		result = sqlSession.update("Member.update", member);
-		sqlSession.commit();
-		config.release(sqlSession);
-		return result;
+		if(result <1) {
+			throw new MemberException("수정실패");
+		}
 	}
 	
-	//삭제하기
-	public int delete(int member_idx) {
+	public void delete(int member_idx) throws MemberException{
 		int result=0;
-		SqlSession sqlSession = config.getSqlSession();
 		result = sqlSession.delete("Member.delete", member_idx);
-		sqlSession.commit();
-		config.release(sqlSession);
-		return result;
+		if(result <1) {
+			throw new MemberException("삭제 실패");
+		}
 	}
+
 	
 }
+
+
+
+
+
+
+
+
+
+

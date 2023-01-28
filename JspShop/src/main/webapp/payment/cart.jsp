@@ -1,9 +1,16 @@
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="com.jspshop.repository.ProductDAO"%>
+<%@page import="com.jspshop.mybatis.MybatisConfig"%>
 <%@page import="com.jspshop.domain.Member"%>
 <%@page import="com.jspshop.domain.Cart"%>
+<%@page import="com.jspshop.domain.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
-<%@ page language="java" contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%!
+	MybatisConfig mybatisConfig = MybatisConfig.getInstance();
+	ProductDAO productDAO = new ProductDAO();
+%>
 <%
 	//클라이언트의 장바구니 등록 요청을 처리한다
 	
@@ -33,11 +40,16 @@
 	
 	//무엇을?
 	String product_idx = request.getParameter("product_idx");
+
+	SqlSession sqlSession  = mybatisConfig.getSqlSession();
+	productDAO.setSqlSession(sqlSession); // injection
+	
+	Product product=productDAO.select(Integer.parseInt(product_idx));
 	
 	//how many? 1
 	Cart cart = new Cart();		//empty
 	cart.setMember(member);		//누가
-	cart.setProduct_idx(Integer.parseInt(product_idx));	//무엇을
+	cart.setProduct(product); //무엇을
 	cart.setEa(1);		//목록을 통해 담을때는 1개를 디폴트로 담는다 
 	
 	//한건의 장바구니 객체를 List에 담자!

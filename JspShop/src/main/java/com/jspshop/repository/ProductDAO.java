@@ -27,12 +27,12 @@ public class ProductDAO {
 		}
 	}
 	
-	//검색
+	//검색시 사용할 메서드
 	public List selectBySearch(Map map) {
-		return sqlSession.selectList("Product.selectAll", map);
+		return sqlSession.selectList("Product.selectBySearch", map);
 	}
 	
-	//모두 가져오기
+	//그냥 모두 가져오기
 	public List selectAll() {
 		return sqlSession.selectList("Product.selectAll");
 	}
@@ -40,6 +40,11 @@ public class ProductDAO {
 	public List selectByCategory(int category_idx) {
 		return sqlSession.selectList("Product.selectByCategory", category_idx);
 	}
+	
+	public Product select(int product_idx) {
+		return sqlSession.selectOne("Product.select",product_idx);
+	}
 }
+
 
 
