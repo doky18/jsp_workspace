@@ -1,3 +1,4 @@
+<%@page import="com.jspshop.domain.Member"%>
 <%@page import="com.jspshop.domain.Category"%>
 <%@page import="java.util.List"%>
 <%@page import="com.jspshop.repository.CategoryDAO"%>
@@ -14,7 +15,7 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
-                        <a href="/"><img src="img/logo.png" alt=""></a>
+                        <a href="/"><img src="/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-7">
@@ -43,17 +44,38 @@
                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="#">Login</a>
-                            <a href="#">Register</a>
+                        
+                        	<%if(session.getAttribute("member")==null){%>
+	                            <a href="/member/loginform.jsp">Login</a>
+	                            <a href="/member/joinform.jsp">Register</a>
+                            <%}else{%>
+                            <%
+                            	Member member=(Member)session.getAttribute("member");
+                            %>
+	                            <a href="/member/logout.jsp">logout</a>
+	                            <a href="#"><%=member.getId()%></a>
+                            <%} %>
+                            
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
                             <li><a href="#"><span class="icon_heart_alt"></span>
                                 <div class="tip">2</div>
                             </a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span>
-                                <div class="tip">2</div>
-                            </a></li>
+                            <li>
+                            	<%if(session.getAttribute("member")==null){ %>
+	                            	<a href="javascript:alert('로그인이 필요한 서비스입니다');">
+	                            		<span class="icon_bag_alt"></span>
+	                                	<div class="tip">2</div>
+	                                </a>
+                                <%}else{ %>
+	                            	<a href="/payment/cartlist.jsp">
+	                            		<span class="icon_bag_alt"></span>
+	                                	<div class="tip">2</div>
+	                                </a>
+                                <%} %>
+                                
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -63,4 +85,3 @@
             </div>
         </div>
     </header>
-    
