@@ -10,6 +10,23 @@
 //request가 있으니 웹
 
 //MVC 패턴에서 M인 부분은 재사용성을 위해 BloodAdvisor.java로 분리시킴
+    //request.setCharacterEncoding("utf-8");
+    //String blood=request.getParameter("blood");
+
+    //현재 코드에서 중립적인 자바 코드는 굳이 jsp안에 둘 필요없다.
+    //이유? 미래의 재사용성을 위해서 별도로 분리시켜 놓아야 한다.
+    //String msg=null; //결과 메시지를 담을 변수
+    //if(blood.equals("A")){
+    //    msg="꼼꼼하다";
+    //}else if(blood.equals("B")){
+    //    msg="자기주관이 뚜렷하다";
+    //}else if(blood.equals("AB")){
+    //    msg="선택지를 많이 둔다";
+    //}else if(blood.equals("O")){
+    //    msg="친구가 많다";
+    //}
+
+    //String msg=advisor.getAdvice(blood);
 %>
 
 <%
