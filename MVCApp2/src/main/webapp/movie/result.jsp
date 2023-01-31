@@ -1,4 +1,4 @@
-<%@page import="mvc.model.blood.BloodAdvisor"%>
+<%@page import="mvcapp2.model.blood.BloodAdvisor"%>
 <%@ page  contentType="text/html;charset=UTF-8"%>
 
 <%!
@@ -13,7 +13,8 @@
 %>
 
 <%
-    String msg=(String)session.getAttribute("msg");
+    String msg=(String)request.getAttribute("msg");		//여기서 "msg"를 스트링으로 담는것
+	//String msg=(String)session.getAttribute("msg");
 %>
 
 <!DOCTYPE html>
@@ -25,5 +26,8 @@
 <body>
 	영화에 대한 관람평, 기대평 :
 	<p>
+		<%=msg %>
+		<!-- 응담이 아니라 html로 서버가 뿌린것 -->
+	</p>
 </body>
 </html>

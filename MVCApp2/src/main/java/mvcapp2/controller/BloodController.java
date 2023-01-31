@@ -1,6 +1,5 @@
 package mvcapp2.controller;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,8 +12,8 @@ public class BloodController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		//3단계 : 알맞는 로직 객체에 일 시키기
-		String blood = request.getParameter("blood");
-		String msg = advisor.getAdvice(blood);	//blood 꼭 받아주기~!!!!
+		String blood = request.getParameter("blood");		//->send.jsp에서 보낸 요청정보(옵션name)을 "A"를 blood로 받고 
+		String msg = advisor.getAdvice(blood);	//blood 꼭 받아주기~!!!!   "A"를 담은 blood를 advisor로 보내서, 값을 get가져옴....
 		//msg는 결과 -> 고객에게까지 넘겨줘야하기 때문에 어딘가에 담아줘야함 => request
 		
 		//4단계 : 클라이언트에게 전달할 결과가 있으므로, 임시적으로 저장해야 한다
@@ -22,7 +21,8 @@ public class BloodController {
 		//여기서의 request 객체는 응답하기 전까지는 생명력이 있으므로, 포워딩 처리로 전달하면
 		//view 인 jsp 까지는 죽지 않고 도달할 수 있다
 		//이 경우 굳이 session을 이용할 필요가 없다
+		//
 		
-		request.setAttribute("msg", msg);  //결과 저장
+		request.setAttribute("msg", msg);  //결과 저장 ("어떤이름", 어떤내용object)
 	}
 }

@@ -8,15 +8,15 @@
 <script type="text/javascript">
 function send() {
     //서버에 폼 전송하기
-    form1.action="/movie"; 
-    form1.method="post";
+    form1.action="/movie.do"; 
+    form1.method="post";			//요청 -> 
     form1.submit();
 }
 </script>
 </head>
 <body>
         <form name="form1">
-            <select name="blood">
+            <select name="movie">
                 <option value="슬램덩크">슬램덩크</option>
                 <option value="아바타2">아바타2</option>
                 <option value="앤트맨3">앤트맨3</option>

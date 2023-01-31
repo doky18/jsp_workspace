@@ -1,4 +1,4 @@
-<%@page import="mvc.model.blood.BloodAdvisor"%>
+<%@page import="mvcapp2.model.blood.BloodAdvisor"%>
 <%@ page  contentType="text/html;charset=UTF-8"%>
 
 <%!
