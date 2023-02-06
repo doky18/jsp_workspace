@@ -17,7 +17,7 @@
 /board/detail.do=com.mvc3.controller.board.DetailController
 /board/delete.do=com.mvc3.controller.board.DeleteController
 #삭제요청이 돌아가는거 알기엔 제일 좋음~!
-/board/update.do=com.mvc3.controller.board.UpdateControllerhttps://discord.com/channels/@me/1032940254610587658
+/board/update.do=com.mvc3.controller.board.UpdateController
 
 
 #뷰매핑 
