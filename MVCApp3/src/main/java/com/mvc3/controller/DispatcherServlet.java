@@ -22,9 +22,10 @@ import javax.servlet.http.HttpServletResponse;
 * 5) 알맞는 결과 페이지를 보여준다 (메인 컨트롤러)
 */
 public class DispatcherServlet extends HttpServlet{
-		//get, post, put, delete 방식이든 다 받아야해서 하나의 진입점을 가진다
+ //get, post, put, delete 방식이든 다 받아야해서 하나의 진입점을 가진다
 	
-	//2단계 업무인 '요청을 분석한다' 단계에서 if문을 사용하지 않으려면 적어도 2단계 이전에는 이미 Properties가 준비 되어있어야 한다
+	//2단계 업무인 '요청을 분석한다' 단계에서 if문을 사용하지 않으려면,
+ //적어도 2단계 이전에는 이미 Properties가 준비 되어있어야 한다.
 	//따라서 서블릿이 태어날 때 이미 준비해놓자! 
 	Properties props;
 	FileInputStream fis;		//일반클래스
@@ -33,7 +34,7 @@ public class DispatcherServlet extends HttpServlet{
 	//						1) 서블릿context를 얻어오고 (getRealPath를 통해서)
 	//						2) xml에서 init의 파라미터를 가져오기
 	public void init(ServletConfig config) throws ServletException {
-		props = new Properties();		//key-value 쌍을 해석할 수 있는 객체 생성 : init 시에 props가 mapping.data 정보를 알 수 있게
+		props = new Properties();		//key-value 쌍을 해석할 수 있는 객체 생성 
 		//fis = new FileInputStream("매핑파일의 위치");
 		try {
 			//getRealPath()를 이용하려면, jsp의 경우 내장객체 중 application 내장객체를 이용하면 됨
@@ -50,7 +51,7 @@ public class DispatcherServlet extends HttpServlet{
 			fis = new FileInputStream(realPath);
 			
 			//fis = new FileInputStream("구구절절/WEB-INF/mapping.data");
-			props.load(fis);// 이 시점에서 다 알게 됨..
+			props.load(fis);// 이 시점에서 props가 다 알게 됨..
 			// init 시에 props가 mapping.data 정보를 알 수 있게
 			
 		} catch (FileNotFoundException e) {
