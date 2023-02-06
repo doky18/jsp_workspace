@@ -25,7 +25,7 @@ public class DispatcherServlet extends HttpServlet{
  //get, post, put, delete 방식이든 다 받아야해서 하나의 진입점을 가진다
 	
 	//2단계 업무인 '요청을 분석한다' 단계에서 if문을 사용하지 않으려면,
- //적어도 2단계 이전에는 이미 Properties가 준비 되어있어야 한다.
+  //적어도 2단계 이전에는 이미 Properties가 준비 되어있어야 한다.
 	//따라서 서블릿이 태어날 때 이미 준비해놓자! 
 	Properties props;
 	FileInputStream fis;		//일반클래스
@@ -107,7 +107,7 @@ public class DispatcherServlet extends HttpServlet{
 			System.out.println("뷰 이름의 검색결과는 "+viewPage);  //뷰페이지 : =/blood/result.jsp
 			
 			//RequestDispatcher dis = request.getRequestDispatcher(viewPage); //("/movie/result.jsp") 를 이제 viewName으로
-			//dis.forward(request, response);	 //이때 전달
+			//dis.forward(request, response);	//이때 전달
 			if(controller.isForward()) {//포워딩할 경우
 				RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 				dispatcher.forward(request, response);
@@ -177,15 +177,5 @@ public class DispatcherServlet extends HttpServlet{
             }
         }
     }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
