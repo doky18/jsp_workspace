@@ -39,7 +39,6 @@ public class DispatcherServlet extends HttpServlet{
 		try {
 			//getRealPath()를 이용하려면, jsp의 경우 내장객체 중 application 내장객체를 이용하면 됨
 			//하지만 이 영역은 서블릿이기에 application 내장객체의 자료형인 ServletContext를 이용
-			
 			//서버가 가동할때 생성되는 서버의 전역적 정보를 가진 객체
 			//jsp의 application 내장객체이다!
 			ServletContext context=config.getServletContext();	
@@ -90,10 +89,8 @@ public class DispatcherServlet extends HttpServlet{
 			//정적 영역에 원본을 올리고, 그 반환된 결과로 Class자료형을 반환받자 
 			Class controllerClass=Class.forName(controllerPath);		//static 영역에 올린다(거푸집 원본) 일 할 애 깨움
 			//"ㅁㅁ님 순서 됐습니다"
-			
 			//인스턴스 올리기
 			//controllerClass.newInstance();
-			
 			//인스턴스를 메모리에 올리는 방법은 new 연산자만 있는게 아니다!
 			//정해져있으면안됨 obj = controllerClass.getDeclaredConstructor().newInstance();  //execute 메서드가 있으면서 
 			//모든 컨트롤러를 아우르는 상위 컨트롤러 클래스를 만들어 준 뒤,,,
@@ -112,9 +109,8 @@ public class DispatcherServlet extends HttpServlet{
 				RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 				dispatcher.forward(request, response);
 			}else {
-				//리다이렉트 할 경우 (재접속)
-				//지정한 url로 재접속을 유도함, 클라이언트인 웹브라우저는 
-				//서버로부터 응답을 받자마자 지정한 url로 재접속을 시도하게 됨
+				//리다이렉트 할 경우 (재접속) 지정한 url로 재접속을 유도함
+				//클라이언트인 웹브라우저는 서버로부터 응답을 받자마자 지정한 url로 재접속을 시도하게 됨
 				//전화를 끊고 새로운 다이얼을 눌러 새롭게 전화거는 것과 같다 
 				response.sendRedirect(viewPage);
 			}
