@@ -24,7 +24,6 @@ public class RegistController2 implements Controller{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-        
 		//1. 파라미터 받기
 		String dname = request.getParameter("dname");
 		String ename = request.getParameter("ename");
