@@ -27,7 +27,6 @@ public class DetailController implements Controller{
 		//3 단계)한 건 가져오기
 		Board board = boardDAO.select(Integer.parseInt(board_idx));
 		
-		
 		//4 단계) 저장할 것이 있다
 		request.setAttribute("board", board);
 		
@@ -39,7 +38,6 @@ public class DetailController implements Controller{
 	public String getViewName() {
 		//6)
 		return"/board/view/detail";
-		
 		//7)list.jsp로 가서 상세보기로 가는 링크 걸기 
 	}
 
