@@ -1,6 +1,10 @@
 package com.mvc3.domain;
 
 public class Emp {
+		private int empno;
+		private String ename;
+		private int sal;
+		private Dept dept;
 
 	public int getEmpno() {
 		return empno;
@@ -26,8 +30,4 @@ public class Emp {
 	public void setDept(Dept dept) {
 		this.dept = dept;
 	}
-	private int empno;
-	private String ename;
-	private int sal;
-	private Dept dept;
 }
