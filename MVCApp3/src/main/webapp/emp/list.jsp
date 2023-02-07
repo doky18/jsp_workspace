@@ -24,13 +24,11 @@
 
 function del() {
 	//alert("삭제?");
-	
 	if(confirm("삭제하시겠습니까?")){
 		$("#form1").attr({
 			action:"/emp/delete.do",
 			method:"post"
 		});
-		
 		$("#form1").submit();	
 	}
 }
