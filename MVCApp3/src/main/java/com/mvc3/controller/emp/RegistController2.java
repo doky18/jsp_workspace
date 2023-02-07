@@ -44,7 +44,6 @@ public class RegistController2 implements Controller{
 		SqlSession sqlSession = config.getSqlSession();
 		deptDAO.setSqlSession(sqlSession);//주입
 		empDAO.setSqlSession(sqlSession);//주입
-		
 		try {
             deptDAO.insert(dept); // 부서 등록
             empDAO.insert(emp); // 사원 등록
@@ -56,17 +55,12 @@ public class RegistController2 implements Controller{
             sqlSession.rollback();
             e.printStackTrace();
         }
-		
 		config.release(sqlSession);
-		
 	}
-
 	public String getViewName() {
 		return "/emp/view/regist";
 	}	
-	
 	public boolean isForward() {
 		return false;  //redirect
 	}
-
 }
