@@ -20,13 +20,25 @@
 /board/update.do=com.mvc3.controller.board.UpdateControllerhttps://discord.com/channels/@me/1032940254610587658
 
 
+#사원관련
+/emp/regist.do=com.mvc3.controller.emp.RegistController
+/emp/list.do=com.mvc3.controller.emp.ListController
+/emp/delete.do=com.mvc3.controller.emp.DeleteController
+
+
 #뷰매핑 
 #주문 정보들 
 #파일명 = 경로  -> 이제 경로가 아무리 바껴도 파일명은 그대로라서 각각 컨트롤러를 바꾸지 않아도 됨
 /blood/view=/blood/result.jsp
 /movie/view=/movie/result.jsp
+
 /board/view/list=/board/list.jsp
 /board/view/regist=/board/list.do
 /board/view/detail=/board/detail.jsp
 /board/view/delete=/board/list.do
 /board/view/update=/board/detail.jsp
+
+/emp/view/regist=/emp/list.do
+/emp/view/list=/emp/list.jsp
+#jsp로 접급해야하는데 do로 접근하면 무한 루프 돎
+/emp/view/del=/emp/list.do
